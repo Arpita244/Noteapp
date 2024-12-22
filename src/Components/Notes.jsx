@@ -8,6 +8,8 @@ const Notes = () => {
   const [notes, setNotes] = useState([]); // List of notes
   const [inputText, setInputText] = useState(""); // Input text for the new or edited note
   const [image, setImage] = useState(null); // Input image for the new or edited note
+  const [inputTag, setInputTag] = useState(""); // Input tag for the new or edited note
+  const [filterTag, setFilterTag] = useState(""); // Tag for filtering notes
   const [editIndex, setEditIndex] = useState(null); // Index of the note being edited
   const [currentUser, setCurrentUser] = useState(null); // Current user
   const navigate = useNavigate();
@@ -37,27 +39,30 @@ const Notes = () => {
 
   // Save a note (add new or update existing)
   const saveHandler = () => {
+    const tagsArray = inputTag ? inputTag.split(',').map(tag => tag.trim()) : [];
     if (editIndex !== null) {
       // Update existing note
       const updatedNotes = [...notes];
-      updatedNotes[editIndex] = { text: inputText, image: image };
+      updatedNotes[editIndex] = { text: inputText, image: image, tags: tagsArray };
       setNotes(updatedNotes);
     } else {
       // Add new note
-      setNotes([...notes, { text: inputText, image: image }]);
+      setNotes([...notes, { text: inputText, image: image, tags: tagsArray }]);
     }
 
     // Clear input fields and reset editIndex
     setInputText("");
     setImage(null);
+    setInputTag("");
     setEditIndex(null);
   };
 
   // Edit a note
-  const editHandler = (index, text, img) => {
+  const editHandler = (index, text, img, tags) => {
     setEditIndex(index);
     setInputText(text);
     setImage(img);
+    setInputTag(tags.join(','));
   };
 
   // Delete a note
@@ -72,6 +77,11 @@ const Notes = () => {
     navigate("/login");
   };
 
+  // Filter notes by tag
+  const filteredNotes = filterTag
+    ? notes.filter((note) => note.tags && note.tags.some(tag => tag.toLowerCase().includes(filterTag.toLowerCase())))
+    : notes;
+
   return (
     <div className="notes">
       {/* Welcome message */}
@@ -81,8 +91,19 @@ const Notes = () => {
         </div>
       )}
 
+      {/* Filter notes by tag */}
+      <div className="filter-section">
+        <input
+          type="text"
+          placeholder="Filter by tag"
+          value={filterTag}
+          onChange={(e) => setFilterTag(e.target.value)}
+        />
+        <button onClick={() => setFilterTag("")}>Clear Filter</button>
+      </div>
+
       {/* Notes list */}
-      {notes.map((note, index) => (
+      {filteredNotes.map((note, index) => (
         editIndex === index ? (
           <CreateNote
             key={index}
@@ -91,13 +112,16 @@ const Notes = () => {
             saveHandler={saveHandler}
             image={image}
             setImage={setImage}
+            inputTag={inputTag}
+            setInputTag={setInputTag}
           />
         ) : (
           <Note
             key={index}
             text={note.text}
             image={note.image}
-            editHandler={() => editHandler(index, note.text, note.image)}
+            tags={note.tags || []}
+            editHandler={() => editHandler(index, note.text, note.image, note.tags || [])}
             deleteHandler={() => deleteHandler(index)}
           />
         )
@@ -111,6 +135,8 @@ const Notes = () => {
           saveHandler={saveHandler}
           image={image}
           setImage={setImage}
+          inputTag={inputTag}
+          setInputTag={setInputTag}
         />
       )}
 
@@ -125,3 +151,4 @@ const Notes = () => {
 };
 
 export default Notes;
+

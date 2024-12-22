@@ -1,133 +1,230 @@
-.note {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    box-shadow: inset -6px -4px 2px rgba(255, 255, 255, 0.03);
-    border-radius: 15px;
-    border: 1.5px solid rgba(255, 255, 255, 0.326);
-    color: #fff;
-    padding: 15px;
-    min-height: 140px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    word-wrap: break-word;
-    position: relative;
-  }
-  
-  .note img {
-    max-width: 100%;
-    max-height: 150px;
-    object-fit: cover;
-    margin-top: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .note-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 15px;
-  }
-  
-  .note textarea {
-    white-space: pre-wrap;
-    background: transparent;
-    border: none;
-    color: #fff;
-    resize: none;
-    font-size: 18px;
-  }
-  
-  .note textarea:focus {
-    outline: none;
-  }
-  
-  .note textarea::placeholder {
-    color: #fff;
-  }
-  
-  .note_save {
-    background: transparent;
-    transition: 0.1s ease-in-out;
-    border: 1.5px solid #fff;
-    border-radius: 10px;
-    color: #fff;
-    padding: 4px 10px;
-    font-size: 13px;
-    cursor: pointer;
-  }
-  
-  .note_save:hover {
-    background: #fff;
-    border: 1.5px solid #fff;
-    color: #4b1589;
-  }
-  
-  /* Image upload styling (matches note box) */
-  .image-upload {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    box-shadow: inset -6px -4px 2px rgba(255, 255, 255, 0.03);
-    border-radius: 15px;
-    border: 1.5px solid rgba(255, 255, 255, 0.326);
-    color: #fff;
-    padding: 10px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .image-upload input {
-    background: transparent;
-    border: 1.5px solid #fff;
-    border-radius: 10px;
-    color: #fff;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  .image-upload input:hover {
-    background: #fff;
-    color: #4b1589;
-  }
-  
-  .image-upload img {
-    max-width: 100%;
-    max-height: 150px;
-    object-fit: cover;
-    margin-top: 10px;
-    border-radius: 8px;
-  }
- /* Styling for the welcome message at the top */
+/* Welcome Message Styling - Centered at Top without Box Shadow */
 .welcome-message {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    padding: 15px;
-    border-radius: 15px;
-    text-align: center;
-    color: #fff;
-    margin-bottom: 20px; /* Space below the welcome message */
+  background: rgba(255, 255, 255, 0.1); /* Transparent background */
+  backdrop-filter: blur(5px); /* Blurring effect */
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  z-index: 5; /* Ensure it's on top */
 }
 
-/* Styling for the logout button positioned at the bottom-right corner */
+/* Notes Styling */
+.note {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: inset -6px -4px 2px rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  border: 1.5px solid rgba(255, 255, 255, 0.326);
+  color: #fff;
+  padding: 15px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  word-wrap: break-word;
+  position: relative;
+  margin-top: 150px;/* Space between Welcome Message and Note Box */
+  box-sizing: border-box; 
+}
+
+.note img {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+}
+
+.note textarea {
+  white-space: pre-wrap;
+  background: transparent;
+  border: none;
+  color: #fff;
+  resize: none;
+  font-size: 18px;
+}
+
+.note textarea:focus {
+  outline: none;
+}
+
+.note textarea::placeholder {
+  color: #fff;
+}
+
+.note_save {
+  background: transparent;
+  transition: 0.1s ease-in-out;
+  border: 1.5px solid #fff;
+  border-radius: 10px;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.note_save:hover {
+  background: #fff;
+  border: 1.5px solid #fff;
+  color: #4b1589;
+}
+
+.image-upload {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: inset -6px -4px 2px rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  border: 1.5px solid rgba(255, 255, 255, 0.326);
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-upload input {
+  background: transparent;
+  border: 1.5px solid #fff;
+  border-radius: 10px;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.image-upload input:hover {
+  background: #fff;
+  color: #4b1589;
+}
+
+.image-upload img {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
 .logout-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #4b1589;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4b1589;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
-    background-color: #6a1b9a; /* Darker shade on hover */
+  background-color: #6a1b9a;
+}
+
+/* Filter Section Styling (Upper-right corner) */
+.filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.326);
+  position: absolute; /* Absolute positioning for top-right corner */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  width: 300px; /* Width of the filter box */
+  z-index: 10; /* Ensure it appears above other content */
+}
+
+.filter-section input {
+  background: transparent;
+  border: 1.5px solid #fff;
+  border-radius: 10px;
+  color: #fff;
+  padding: 8px 10px;
+  font-size: 14px;
+  width: 70%;
+}
+
+.filter-section input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.filter-section input:focus {
+  outline: none;
+  border: 1.5px solid #fff;
+}
+
+.filter-section button {
+  background: transparent;
+  border: 1.5px solid #fff;
+  border-radius: 10px;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-section button:hover {
+  background: #fff;
+  color: #4b1589;
+}
+
+/* Tag input styling */
+.tag-input {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: inset -6px -4px 2px rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  border: 1.5px solid rgba(255, 255, 255, 0.326);
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  width: 100%;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.tag-input:focus {
+  outline: none;
+}
+
+.tag-input::placeholder {
+  color: #fff;
+}
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
 }
