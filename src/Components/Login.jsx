@@ -47,6 +47,7 @@ if (user) {
 
   return (
     <div className="auth-container">
+       <h1 className="app-name">MemoMate</h1>
       <div className="auth-form">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>

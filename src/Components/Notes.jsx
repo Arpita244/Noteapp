@@ -74,7 +74,7 @@ const Notes = () => {
   // Logout the user
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
-    navigate("/login");
+    navigate("/");
   };
 
   // Filter notes by tag
